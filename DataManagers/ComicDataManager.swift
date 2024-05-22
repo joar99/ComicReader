@@ -31,6 +31,18 @@ class ComicDataManager {
       let (data, _) = try await URLSession.shared.data(from: url)
       return try JSONDecoder().decode(Comic.self, from: data)
   }
+  
+  func fetchExplanationHTML(for comicID: Int) async throws -> String {
+    let urlString = "https://www.explainxkcd.com/wiki/index.php/\(comicID)"
+    guard let url = URL(string: urlString) else {
+      throw URLError(.badURL)
+    }
+    let (data, _) = try await URLSession.shared.data(from: url)
+    guard let htmlString = String(data: data, encoding: .utf8) else {
+      throw URLError(.cannotDecodeContentData)
+    }
+    return htmlString
+  }
 }
 
 
