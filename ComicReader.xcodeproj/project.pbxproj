@@ -11,6 +11,11 @@
 		406772302BFE07F70072160E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4067722F2BFE07F70072160E /* ContentView.swift */; };
 		406772322BFE07F70072160E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406772312BFE07F70072160E /* Assets.xcassets */; };
 		406772352BFE07F70072160E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406772342BFE07F70072160E /* Preview Assets.xcassets */; };
+		408252AF2BFE2368007D30B3 /* AllComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408252AE2BFE2368007D30B3 /* AllComicsView.swift */; };
+		408252B12BFE2600007D30B3 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408252B02BFE2600007D30B3 /* Comic.swift */; };
+		408252B32BFE267D007D30B3 /* ComicDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408252B22BFE267D007D30B3 /* ComicDataManager.swift */; };
+		408252B52BFE2932007D30B3 /* ComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408252B42BFE2932007D30B3 /* ComicsViewModel.swift */; };
+		408252B72BFE2AF7007D30B3 /* ComicCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408252B62BFE2AF7007D30B3 /* ComicCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		4067722F2BFE07F70072160E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		406772312BFE07F70072160E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		406772342BFE07F70072160E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		408252AE2BFE2368007D30B3 /* AllComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllComicsView.swift; sourceTree = "<group>"; };
+		408252B02BFE2600007D30B3 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		408252B22BFE267D007D30B3 /* ComicDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDataManager.swift; sourceTree = "<group>"; };
+		408252B42BFE2932007D30B3 /* ComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewModel.swift; sourceTree = "<group>"; };
+		408252B62BFE2AF7007D30B3 /* ComicCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,7 @@
 		40B3DDA72BFE194600A22342 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				408252B42BFE2932007D30B3 /* ComicsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -81,6 +92,7 @@
 		40B3DDA82BFE194F00A22342 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				408252B22BFE267D007D30B3 /* ComicDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -88,6 +100,7 @@
 		40B3DDA92BFE195600A22342 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				408252B02BFE2600007D30B3 /* Comic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,6 +108,8 @@
 		40B3DDAA2BFE195A00A22342 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				408252AE2BFE2368007D30B3 /* AllComicsView.swift */,
+				408252B62BFE2AF7007D30B3 /* ComicCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				408252B72BFE2AF7007D30B3 /* ComicCard.swift in Sources */,
+				408252B52BFE2932007D30B3 /* ComicsViewModel.swift in Sources */,
+				408252AF2BFE2368007D30B3 /* AllComicsView.swift in Sources */,
+				408252B32BFE267D007D30B3 /* ComicDataManager.swift in Sources */,
+				408252B12BFE2600007D30B3 /* Comic.swift in Sources */,
 				406772302BFE07F70072160E /* ContentView.swift in Sources */,
 				4067722E2BFE07F70072160E /* ComicReaderApp.swift in Sources */,
 			);
