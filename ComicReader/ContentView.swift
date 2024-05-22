@@ -13,8 +13,7 @@ struct ContentView: View {
   
     var body: some View {
       TabView {
-        RoundedRectangle(cornerRadius: 16)
-          .foregroundStyle(Color.blue)
+        AllComicsView()
           .tabItem { Label("Explore Comics", systemImage: "book.fill") }
         
         RoundedRectangle(cornerRadius: 16)
