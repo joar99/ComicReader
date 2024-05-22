@@ -36,7 +36,6 @@ class ComicsViewModel: ObservableObject {
     }
   }
   
-  
   func loadLatestComic() async {
     do {
       let latestComic = try await dataManager.fetchLatestComic()
@@ -44,6 +43,18 @@ class ComicsViewModel: ObservableObject {
       print(latestComicNumber)
     } catch {
       print("Error fetching the latest comic: \(error)")
+    }
+  }
+  
+  func fetchExplanation(for comicID: Int, at index: Int) async {
+    let parser = HTMLParser()
+    do {
+      let htmlString = try await dataManager.fetchExplanationHTML(for: comicID)
+      let explanation = try parser.parseExplanation(from: htmlString)
+      self.comicList[index].explanation = explanation
+    } catch {
+      print("Error fetching explanation: \(error)")
+      self.comicList[index].explanation = "Failed to load explanation"
     }
   }
   

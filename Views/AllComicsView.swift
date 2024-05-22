@@ -18,6 +18,9 @@ struct AllComicsView: View {
           ComicCard(comic: comic)
             .id(comic.num)
             .onTapGesture {
+              if comic.explanation == nil {
+                Task { await comicModel.fetchExplanation(for: comic.id, at: index) }
+              }
               comicModel.showDetails = true
             }
             .sheet(isPresented: $comicModel.showDetails, content: {
