@@ -35,6 +35,10 @@
 		406772212BFE07F70072160E = {
 			isa = PBXGroup;
 			children = (
+				40B3DDAA2BFE195A00A22342 /* Views */,
+				40B3DDA92BFE195600A22342 /* Models */,
+				40B3DDA82BFE194F00A22342 /* DataManagers */,
+				40B3DDA72BFE194600A22342 /* ViewModels */,
 				4067722C2BFE07F70072160E /* ComicReader */,
 				4067722B2BFE07F70072160E /* Products */,
 			);
@@ -65,6 +69,34 @@
 				406772342BFE07F70072160E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		40B3DDA72BFE194600A22342 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		40B3DDA82BFE194F00A22342 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataManagers;
+			sourceTree = "<group>";
+		};
+		40B3DDA92BFE195600A22342 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40B3DDAA2BFE195A00A22342 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
