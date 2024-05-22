@@ -21,7 +21,7 @@ struct AllComicsView: View {
               comicModel.showDetails = true
             }
             .sheet(isPresented: $comicModel.showDetails, content: {
-              RoundedRectangle(cornerRadius: 16)
+              DetailedComicView(comic: comic)
             })
             .onAppear {
               comicModel.currentIndex = index
