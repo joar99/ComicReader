@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailedCoreComicView: View {
   
+  var dateHandler = DateHandler()
   var comic: ComicEntity
   
   var body: some View {
@@ -18,7 +19,7 @@ struct DetailedCoreComicView: View {
           .font(.largeTitle)
           .padding(.bottom, 10)
         
-        releaseDateView(year: comic.year, month: comic.month, day: comic.day)
+        dateHandler.releaseDateView(year: comic.year, month: comic.month, day: comic.day)
           .padding(.bottom, 10)
         
         localImageView(for: comic.img)
