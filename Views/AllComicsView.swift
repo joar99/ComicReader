@@ -15,7 +15,7 @@ struct AllComicsView: View {
     ScrollView(.vertical) {
       LazyVStack(spacing: 0) {
         ForEach(Array(comicModel.comicList.enumerated()), id: \.element.num) { index, comic in
-          ComicCard(comic: comic)
+          ComicCard(comicModel: comicModel, comic: comic, index: index)
             .id(comic.num)
             .onTapGesture {
               if comic.explanation == nil {
