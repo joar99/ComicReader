@@ -41,5 +41,5 @@ struct DetailedComicView: View {
 }
 
 #Preview {
-  DetailedComicView(comic: Comic.mock)
+  DetailedComicView(comic: .mock)
 }

@@ -43,6 +43,6 @@ struct AllComicsView: View {
 
 struct AllComicsView_Previews: PreviewProvider {
     static var previews: some View {
-        AllComicsView(comicModel: .preview)
+        AllComicsView(comicModel: .mock)
     }
 }

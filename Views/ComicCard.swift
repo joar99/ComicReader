@@ -53,6 +53,6 @@ struct ComicCard: View {
 
 struct ComicCard_Previews: PreviewProvider {
     static var previews: some View {
-      ComicCard(comicModel: .preview, comic: Comic.mock, index: 1)
+      ComicCard(comicModel: .mock, comic: .mock, index: 1)
     }
 }
