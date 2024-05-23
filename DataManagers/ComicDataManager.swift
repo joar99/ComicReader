@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ComicDataManager {
+class ComicDataManager: ComicDataManagerProtocol {
   
   func fetchComics(startingFrom startNumber: Int, count: Int) async throws -> [Comic] {
     var comics = [Comic]()
