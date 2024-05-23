@@ -27,9 +27,11 @@ class ComicDataManager {
   }
   
   func fetchLatestComic() async throws -> Comic {
-      let url = URL(string: "https://xkcd.com/info.0.json")!
-      let (data, _) = try await URLSession.shared.data(from: url)
-      return try JSONDecoder().decode(Comic.self, from: data)
+    guard let url = URL(string: "https://xkcd.com/info.0.json") else {
+      throw URLError(.badURL)
+    }
+    let (data, _) = try await URLSession.shared.data(from: url)
+    return try JSONDecoder().decode(Comic.self, from: data)
   }
   
   func fetchExplanationHTML(for comicID: Int) async throws -> String {
@@ -42,6 +44,20 @@ class ComicDataManager {
       throw URLError(.cannotDecodeContentData)
     }
     return htmlString
+  }
+  
+  func downloadImage(from urlString: String, withID id: Int) async throws -> String? {
+    guard let url = URL(string: urlString) else { return nil }
+    
+    let (imageData, _) = try await URLSession.shared.data(from: url)
+    
+    let fileManager = FileManager.default
+    let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let fileName = "comic_\(id).png"
+    let filePath = documentsDirectory.appendingPathComponent(fileName)
+    
+    try imageData.write(to: filePath, options: .atomic)
+    return filePath.path
   }
 }
 
