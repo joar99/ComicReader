@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol ComicDataManagerProtocol {
+  func fetchComics(startingFrom startNumber: Int, count: Int) async throws -> [Comic]
+  func fetchLatestComic() async throws -> Comic
+  func fetchExplanationHTML(for comicID: Int) async throws -> String
+  func downloadImage(from urlString: String, withID id: Int) async throws -> String?
+}
