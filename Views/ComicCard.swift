@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ComicCard: View {
   
+  var comicModel: ComicsViewModel
   var comic: Comic
+  var index: Int
   
   var body: some View {
     ZStack {
@@ -23,7 +25,7 @@ struct ComicCard: View {
           Spacer()
           Button(action: {
             Task {
-              //TODO MARK COREDATA FAVORITE
+              await comicModel.toggleFavorite(for: index)
             }
           }) {
             Image(systemName: comic.isFavorite ?? false ? "heart.fill" : "heart")
@@ -49,6 +51,8 @@ struct ComicCard: View {
   }
 }
 
-#Preview {
-  ComicCard(comic: Comic.mock)
+struct ComicCard_Previews: PreviewProvider {
+    static var previews: some View {
+      ComicCard(comicModel: .preview, comic: Comic.mock, index: 1)
+    }
 }
