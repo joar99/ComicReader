@@ -18,10 +18,10 @@ class ComicsViewModel: ObservableObject {
   @Published var showDetails: Bool = false
   @Published var favoriteComicIDs = Set<Int>()
   
-  private let dataManager: ComicDataManager
+  private let dataManager: ComicDataManagerProtocol
   private let container: NSPersistentContainer
   
-  init(dataManager: ComicDataManager, container: NSPersistentContainer) {
+  init(dataManager: ComicDataManagerProtocol, container: NSPersistentContainer) {
     self.dataManager = dataManager
     self.container = container
     container.loadPersistentStores { description, error in
