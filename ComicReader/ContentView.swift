@@ -13,7 +13,7 @@ struct ContentView: View {
   @StateObject var comicModel: ComicsViewModel
   
   init() {
-    let dataManager = ComicDataManager()
+    let dataManager: ComicDataManagerProtocol = ComicDataManager()
     let container = NSPersistentContainer(name: "ComicContainer")
     _comicModel = StateObject(wrappedValue: ComicsViewModel(dataManager: dataManager, container: container))
   }
