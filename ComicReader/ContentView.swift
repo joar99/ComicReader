@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
   
@@ -13,24 +14,24 @@ struct ContentView: View {
   
   init() {
     let dataManager = ComicDataManager()
-    _comicModel = StateObject(wrappedValue: ComicsViewModel(dataManager: dataManager))
+    let container = NSPersistentContainer(name: "ComicContainer")
+    _comicModel = StateObject(wrappedValue: ComicsViewModel(dataManager: dataManager, container: container))
   }
   
-    var body: some View {
-      TabView {
-        AllComicsView(comicModel: comicModel)
-          .tabItem { Label("Explore Comics", systemImage: "book.fill") }
-        
-        RoundedRectangle(cornerRadius: 16)
-          .foregroundStyle(Color.red)
-          .tabItem { Label("My Comics", systemImage: "person.fill") }
-      }
-      .onAppear {
-        Task {await comicModel.initializeComics()}
-      }
+  var body: some View {
+    TabView {
+      AllComicsView(comicModel: comicModel)
+        .tabItem { Label("Explore Comics", systemImage: "book.fill") }
+      
+      AllCoreComicsView(comicModel: comicModel)
+        .tabItem { Label("My Comics", systemImage: "person.fill") }
     }
+    .onAppear {
+      Task {await comicModel.initializeComics()}
+    }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
