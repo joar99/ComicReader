@@ -32,12 +32,12 @@ class ComicsViewModel: ObservableObject {
   
   func loadComics() async {
     do {
-      let comics = try await dataManager.fetchComics(startingFrom: latestComicNumber, count: 10)
+      let comics = try await dataManager.fetchComics(startingFrom: latestComicNumber, count: 20)
       for var comic in comics {
         comic.isFavorite = self.favoriteStore.favoriteComicIDs.contains(comic.id)
         self.comicList.append(comic)
       }
-      latestComicNumber -= 10
+      latestComicNumber -= 20
     } catch {
       print("Error fetching comics: \(error)")
     }
