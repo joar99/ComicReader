@@ -32,22 +32,17 @@ class CoreComicViewModel: ObservableObject {
   }
   
   func subscribeToFavoriteToggles(publisher: PassthroughSubject<Comic, Never>) {
-    publisher
-      .sink { [weak self] comic in
-        Task { [weak self] in
-          guard let self = self else { return }
-          print("Received comic in subscription: \(comic.title)")
-          if let isFavorite = comic.isFavorite {
-            if isFavorite {
-              self.removeComic(id: comic.id)
-            } else {
-              await self.addComic(comic: comic)
-            }
-          }
+    publisher.sink {comic in
+      print("Recieved Comic from Publisher \(comic.title)")
+      if let isFavorite = comic.isFavorite {
+        if isFavorite {
+          self.removeComic(id: comic.id)
+        } else {
+          Task {await self.addComic(comic: comic)}
         }
       }
-      .store(in: &cancellables)
-    }
+    }.store(in: &cancellables)
+  }
   
   func fetchComics() {
     let request = NSFetchRequest<ComicEntity>(entityName: "ComicEntity")
@@ -135,4 +130,5 @@ class CoreComicViewModel: ObservableObject {
       print("Error saving container \(error)")
     }
   }
+  
 }
