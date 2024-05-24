@@ -72,5 +72,4 @@ class ComicsViewModel: ObservableObject {
     print("toggleFavorites on: \(comic.title)")
   }
   
-  
 }
