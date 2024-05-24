@@ -12,16 +12,16 @@ import Combine
 class CoreComicViewModel: ObservableObject {
   
   @Published var savedComics: [ComicEntity] = []
-  //VARIABLE TO REFERENCE FAVORITES SOMEHOW TODO
+  @Published var favoriteStore: FavoriteComicsStore
   
   private var cancellables = Set<AnyCancellable>()
   private let container: NSPersistentContainer
   private let dataManager: ComicDataManagerProtocol
   
-  init(dataManager: ComicDataManagerProtocol, container: NSPersistentContainer) {
+  init(dataManager: ComicDataManagerProtocol, container: NSPersistentContainer, favoriteStore: FavoriteComicsStore) {
     self.dataManager = dataManager
     self.container = container
-    //FAVORITE VARIABLES SET TODO
+    self.favoriteStore = favoriteStore
     container.loadPersistentStores { description, error in
       if let error = error {
         print("Error loading CoreData stores: \(error)")
@@ -54,7 +54,7 @@ class CoreComicViewModel: ObservableObject {
     do {
       let result = try container.viewContext.fetch(request)
       self.savedComics = result
-      //SET ORIGINAL COMIC AS FAVORITE TODO
+      self.favoriteStore.favoriteComicIDs = Set(result.compactMap { Int($0.id) })
     } catch {
       print("Error fetching entities \(error)")
     }
