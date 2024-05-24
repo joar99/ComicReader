@@ -28,7 +28,7 @@ struct AllComicsView: View {
             })
             .onAppear {
               comicModel.currentIndex = index
-              if index == comicModel.comicList.count - 1 && index > 0 {
+              if index == comicModel.comicList.count - 6 && index > 0 {
                 Task { await comicModel.loadComics() }
               }
             }
