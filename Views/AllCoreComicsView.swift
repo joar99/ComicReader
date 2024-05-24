@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AllCoreComicsView: View {
   
-  @ObservedObject var comicModel: ComicsViewModel
+  @ObservedObject var coreModel: CoreComicViewModel
   
     var body: some View {
       NavigationStack {
-        List(comicModel.savedComics, id: \.self) { comic in
+        List(coreModel.savedComics, id: \.self) { comic in
           NavigationLink(destination: DetailedCoreComicView(comic: comic)) {
             VStack {
               Text(comic.title ?? "Unknown Title")
@@ -21,7 +21,7 @@ struct AllCoreComicsView: View {
           }
         }
         .onAppear {
-          comicModel.fetchComics()
+          coreModel.fetchComics()
         }
         .navigationTitle("Saved Comics")
       }
