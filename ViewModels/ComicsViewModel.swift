@@ -6,31 +6,23 @@
 //
 
 import Foundation
-import CoreData
+import Combine
 
 @MainActor
 class ComicsViewModel: ObservableObject {
   
   @Published var comicList: [Comic] = []
-  @Published var savedComics: [ComicEntity] = []
   @Published var currentIndex: Int = 0
   @Published var latestComicNumber: Int = 0
   @Published var showDetails: Bool = false
-  @Published var favoriteComicIDs = Set<Int>()
+  @Published var favoriteStore: FavoriteComicsStore
   
   private let dataManager: ComicDataManagerProtocol
-  private let container: NSPersistentContainer
+  var favoriteTogglePublisher = PassthroughSubject<Comic, Never>()
   
-  init(dataManager: ComicDataManagerProtocol, container: NSPersistentContainer) {
+  init(dataManager: ComicDataManagerProtocol, favoriteStore: FavoriteComicsStore) {
     self.dataManager = dataManager
-    self.container = container
-    container.loadPersistentStores { description, error in
-      if let error = error {
-        print("Error loading CoreData: \(error)")
-      } else {
-        print("Successfully loaded CoreData")
-      }
-    }
+    self.favoriteStore = favoriteStore
   }
   
   func initializeComics() async {
@@ -42,7 +34,7 @@ class ComicsViewModel: ObservableObject {
     do {
       let comics = try await dataManager.fetchComics(startingFrom: latestComicNumber, count: 10)
       for var comic in comics {
-        comic.isFavorite = self.favoriteComicIDs.contains(comic.id)
+        comic.isFavorite = self.favoriteStore.favoriteComicIDs.contains(comic.id)
         self.comicList.append(comic)
       }
       latestComicNumber -= 10
@@ -71,6 +63,13 @@ class ComicsViewModel: ObservableObject {
       print("Error fetching explanation: \(error)")
       self.comicList[index].explanation = "Failed to load explanation"
     }
+  }
+  
+  func toggleFavorite(for index: Int) async {
+    let comic = comicList[index]
+    favoriteTogglePublisher.send(comic)
+    comicList[index].isFavorite?.toggle()
+    print("toggleFavorites on: \(comic.title)")
   }
   
   
