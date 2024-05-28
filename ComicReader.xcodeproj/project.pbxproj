@@ -81,7 +81,6 @@
 			children = (
 				40ECE9B62C00B9EF0078A42C /* StateStores */,
 				4002518F2BFFECEB002A8461 /* Protocols */,
-				40F3901C2BFE8A5400838A1E /* CoreData */,
 				408252C32BFE49A1007D30B3 /* Utilities */,
 				408252BD2BFE41C4007D30B3 /* Extensions */,
 				40B3DDAA2BFE195A00A22342 /* Views */,
@@ -104,6 +103,7 @@
 		4067722C2BFE07F70072160E /* ComicReader */ = {
 			isa = PBXGroup;
 			children = (
+				40B638472C05C0F60076B1B4 /* ComicContainer.xcdatamodeld */,
 				4067722D2BFE07F70072160E /* ComicReaderApp.swift */,
 				4067722F2BFE07F70072160E /* ContentView.swift */,
 				406772312BFE07F70072160E /* Assets.xcassets */,
@@ -182,14 +182,6 @@
 				40ECE9B72C00BA020078A42C /* FavoriteComicsStore.swift */,
 			);
 			path = StateStores;
-			sourceTree = "<group>";
-		};
-		40F3901C2BFE8A5400838A1E /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				40B638472C05C0F60076B1B4 /* ComicContainer.xcdatamodeld */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,8 +511,7 @@
 				40B638482C05C0F60076B1B4 /* ComicContainer.xcdatamodel */,
 			);
 			currentVersion = 40B638482C05C0F60076B1B4 /* ComicContainer.xcdatamodel */;
-			name = ComicContainer.xcdatamodeld;
-			path = /Users/joar/Documents/SwiftUI/ComicReader/CoreData/ComicContainer.xcdatamodeld;
+			path = ComicContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
